@@ -1,0 +1,54 @@
+body{
+  margin: 0;
+  background-color: #F2C53D;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main{
+  text-align: center;
+  background-color: #F2D4AE;
+  width: max-content;
+  padding: 2rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+h1{
+  font-family: 'Courier New', Courier, monospace;
+  margin-block: 0 1rem;
+  color: #37A6A6;
+}
+
+button{
+  background-color: #F24B6A;
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #F2ADA7;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  gap: 1rem;
+  width: fit-content;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+.card{
+  list-style: none;
+  font-size: 3rem;
+  background-color: #37A6A6;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem;
+}
