@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Form from "./components/Form"
 import MemoryCard from "./components/MemoryCard"
 
@@ -7,7 +7,27 @@ function App() {
   const [isGameOn, setIsGameOn] = useState(false)
   const [emojiArray, setEmojiArray] = useState([])
   const [selectedCards, setSelectedCards] = useState([])
+  const [matchedCards, setMatchedCards] = useState([])
+  const [isGameOver, setIsGameOver] = useState(false)
 
+  useEffect(() => {
+    if (selectedCards.length === 2 && selectedCards.every(card => card.name === selectedCards[0].name)) {
+      const alreadyMatched = matchedCards.some(card => card.name === selectedCards[0].name)
+      if (!alreadyMatched) {
+        setMatchedCards(prev => [...prev, ...selectedCards])
+      }
+    }
+  }, [selectedCards, matchedCards])
+
+  useEffect(() => {
+    if (matchedCards.length > 0 && matchedCards.length === emojiArray.length) {
+      setIsGameOver(true)
+    }
+  }, [matchedCards, emojiArray])
+
+  console.log('selected cards', selectedCards)
+  console.log('matched cards', matchedCards)
+  console.log('GAME OVER', isGameOver)
   async function startGame(e) {
     e.preventDefault()
     try {
@@ -56,7 +76,7 @@ function App() {
     }
     return randomIndices
   }
-
+  // selecting atmost 2 cards at once and also making sure that the same card is not selected twice
   function handleCardClick(name, index) {
     const selectedCard = selectedCards.find(emoji => emoji.index === index)
 
@@ -67,12 +87,17 @@ function App() {
     }
   }
 
-  console.log(selectedCards)
   return (
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && <Form startGame={startGame} />}
-      {isGameOn && <MemoryCard emojiArray={emojiArray} handleClick={handleCardClick} />}
+      {isGameOn &&
+        <MemoryCard
+          emojiArray={emojiArray}
+          handleClick={handleCardClick}
+          selectedCards={selectedCards}
+          matchedCards={matchedCards}
+        />}
     </main>
   )
 }
