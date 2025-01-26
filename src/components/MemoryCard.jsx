@@ -1,14 +1,17 @@
 import { decodeEntity } from "html-entities"
 
 function MemoryCard({
-  emojiArray = []
+  emojiArray = [],
+  handleClick
 }) {
 
   return (
     <ul>
       {
         emojiArray.map((each, index) =>
-          <li className="card" key={index}>
+          <li
+            onClick={() => handleClick(each.name, index)}
+            className="card" key={index}>
             {decodeEntity(each.htmlCode[0])}
           </li>
         )

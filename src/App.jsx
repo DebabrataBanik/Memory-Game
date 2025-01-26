@@ -6,6 +6,7 @@ function App() {
 
   const [isGameOn, setIsGameOn] = useState(false)
   const [emojiArray, setEmojiArray] = useState([])
+  const [selectedCards, setSelectedCards] = useState([])
 
   async function startGame(e) {
     e.preventDefault()
@@ -56,11 +57,22 @@ function App() {
     return randomIndices
   }
 
+  function handleCardClick(name, index) {
+    const selectedCard = selectedCards.find(emoji => emoji.index === index)
+
+    if (!selectedCard && selectedCards.length < 2) {
+      setSelectedCards(prev => [...prev, { name, index }])
+    } else if (!selectedCard && selectedCards.length === 2) {
+      setSelectedCards([{ name, index }])
+    }
+  }
+
+  console.log(selectedCards)
   return (
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && <Form startGame={startGame} />}
-      {isGameOn && <MemoryCard emojiArray={emojiArray} />}
+      {isGameOn && <MemoryCard emojiArray={emojiArray} handleClick={handleCardClick} />}
     </main>
   )
 }
