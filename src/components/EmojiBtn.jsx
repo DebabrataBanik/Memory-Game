@@ -2,10 +2,19 @@
 function EmojiBtn({
   content,
   handleClick,
-  style
+  isCardSelected,
+  isCardMatched
 }) {
   return (
-    <button className={style} onClick={handleClick}>{content}</button>
+    <button
+      className={`card ${isCardMatched ? 'card--matched' : isCardSelected ? 'card--selected' : ''}`}
+      disabled={isCardSelected || isCardMatched}
+      onClick={handleClick}
+    >
+      {
+        isCardSelected || isCardMatched ? content : '?'
+      }
+    </button >
   )
 }
 

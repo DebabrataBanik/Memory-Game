@@ -18,7 +18,7 @@ main{
 
 h1{
   font-family: 'Courier New', Courier, monospace;
-  margin-block: 0 1rem;
+  margin-block: 0 2rem;
   color: #37A6A6;
 }
 
@@ -30,13 +30,13 @@ button{
   cursor: pointer;
   color: #F2ADA7;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
 ul{
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: center;
   padding: 0;
   gap: 1rem;
@@ -46,9 +46,25 @@ ul{
   list-style: none;
 }
 .card{
+  width: 98px;
+  height: 98.4px;
   font-size: 3rem;
-  background-color: #37A6A6;
-  border-radius: 10px;
+  background-color: hsl(180, 50%, 43%, 0.5);
+  border-radius: 15px;
   cursor: pointer;
   padding: 1rem;
+
+  &:hover, &:focus{
+    box-shadow: 0 0 2px 1px #37A6A6;
+  }
+}
+
+.card--selected{
+  background-color: hsl(180, 50%, 43%, 0.7);
+  pointer-events: none;
+}
+
+.card--matched{
+  background-color: #37A6A6;
+  pointer-events: none;
 }
