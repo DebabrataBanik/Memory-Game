@@ -43,9 +43,9 @@ ul{
   width: fit-content;
   max-width: 40rem;
   margin-inline: auto;
+  list-style: none;
 }
 .card{
-  list-style: none;
   font-size: 3rem;
   background-color: #37A6A6;
   border-radius: 10px;
