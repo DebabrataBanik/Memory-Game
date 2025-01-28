@@ -3,7 +3,7 @@ function Form({
 }) {
   return (
     <form onSubmit={startGame}>
-      <button>Start Game</button>
+      <button className="btn">Start Game</button>
     </form>
   )
 }

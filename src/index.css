@@ -22,8 +22,8 @@ h1{
 }
 
 button{
-  background-color: #F24B6A;
-  border: none;
+  background-color: hsl(349, 87%, 62%);
+  border: 1px solid hsl(349, 87%, 62%);
   padding: .5rem 1rem;
   width: fit-content;
   margin-inline: auto;
@@ -34,6 +34,11 @@ button{
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+.btn:hover{
+  background-color: hsl(349, 87%, 62%, 0.5);
+  border: 1px solid hsl(349, 87%, 62%);
 }
 
 ul{
@@ -48,6 +53,9 @@ ul{
   list-style: none;
 }
 .card{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border: none;
   width: 98px;
   height: 98.4px;
   font-size: 3rem;
