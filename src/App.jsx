@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Form from "./components/Form"
 import MemoryCard from "./components/MemoryCard"
 import AssistiveTechInfo from "./components/AssistiveTechInfo"
+import GameOver from "./components/GameOver"
 
 function App() {
 
@@ -88,9 +89,16 @@ function App() {
     }
   }
 
+  function resetGame(){
+    setIsGameOn(false)
+    setIsGameOver(false)
+    setMatchedCards([])
+    setSelectedCards([])
+  }
+
   return (
     <main>
-      <h1>Memory Game</h1>
+      <h1>MEMORY GAME</h1>
       {
         !isGameOn && <Form startGame={startGame} />
       }
@@ -99,6 +107,9 @@ function App() {
         emojis={emojiArray}
         matchedCards={matchedCards}
       /> }
+      {
+        isGameOver && <GameOver handleClick={resetGame}/>
+      }
       {isGameOn &&
         <MemoryCard
           emojiArray={emojiArray}
