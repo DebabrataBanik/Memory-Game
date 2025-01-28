@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Form from "./components/Form"
 import MemoryCard from "./components/MemoryCard"
+import AssistiveTechInfo from "./components/AssistiveTechInfo"
 
 function App() {
 
@@ -90,7 +91,14 @@ function App() {
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && <Form startGame={startGame} />}
+      {
+        !isGameOn && <Form startGame={startGame} />
+      }
+      { isGameOn && !isGameOver && 
+      <AssistiveTechInfo 
+        emojis={emojiArray}
+        matchedCards={matchedCards}
+      /> }
       {isGameOn &&
         <MemoryCard
           emojiArray={emojiArray}
