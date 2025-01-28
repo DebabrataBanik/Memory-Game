@@ -1,18 +1,22 @@
-
+import { decodeEntity } from "html-entities"
 function EmojiBtn({
-  content,
+  emoji = {},
   handleClick,
   isCardSelected,
-  isCardMatched
+  isCardMatched  
 }) {
+
+  const ariaLabel = isCardSelected ? emoji.name : 'Card upside down.'
   return (
     <button
-      className={`card ${isCardMatched ? 'card--matched' : isCardSelected ? 'card--selected' : ''}`}
+      aria-live="polite"
+      aria-label={ariaLabel}
+      className={`card ${isCardMatched ? 'card--matched' : isCardSelected ? 'card--selected' : '' }`}
       disabled={isCardSelected || isCardMatched}
       onClick={handleClick}
     >
       {
-        isCardSelected || isCardMatched ? content : '?'
+        isCardSelected || isCardMatched ? decodeEntity(emoji.htmlCode[0]) : '?'
       }
     </button >
   )

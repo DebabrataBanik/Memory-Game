@@ -1,4 +1,3 @@
-import { decodeEntity } from "html-entities"
 import EmojiBtn from "./EmojiBtn"
 
 function MemoryCard({
@@ -20,7 +19,7 @@ function MemoryCard({
             <li
               key={index}>
               <EmojiBtn
-                content={decodeEntity(each.htmlCode[0])}
+                emoji={each}
                 handleClick={() => handleClick(each.name, index)}
                 isCardSelected={isCardSelected}
                 isCardMatched={isCardMatched}
