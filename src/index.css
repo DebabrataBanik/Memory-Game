@@ -8,6 +8,7 @@ body{
 }
 
 main{
+  max-width: 40rem; 
   text-align: center;
   background-color: #F2D4AE;
   width: max-content;
@@ -48,7 +49,7 @@ ul{
   padding: 0;
   gap: 1rem;
   width: fit-content;
-  max-width: 40rem;
+  /* max-width: 40rem; */
   margin-inline: auto;
   list-style: none;
 }
@@ -111,6 +112,13 @@ ul{
   font-family: 'Courier New', Courier, monospace;
   margin: 0;
   color: #F24B6A;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.p--regular{
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  color: #F24B6A;
   font-weight: bold;
 }

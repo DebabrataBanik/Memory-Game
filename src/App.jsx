@@ -3,6 +3,7 @@ import Form from "./components/Form"
 import MemoryCard from "./components/MemoryCard"
 import AssistiveTechInfo from "./components/AssistiveTechInfo"
 import GameOver from "./components/GameOver"
+import ErrorCard from "./components/ErrorCard"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
   const [selectedCards, setSelectedCards] = useState([])
   const [matchedCards, setMatchedCards] = useState([])
   const [isGameOver, setIsGameOver] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     if (selectedCards.length === 2 && selectedCards.every(card => card.name === selectedCards[0].name)) {
@@ -27,9 +29,6 @@ function App() {
     }
   }, [matchedCards, emojiArray])
 
-  console.log('selected cards', selectedCards)
-  console.log('matched cards', matchedCards)
-  console.log('GAME OVER', isGameOver)
   async function startGame(e) {
     e.preventDefault()
     try {
@@ -44,6 +43,7 @@ function App() {
       }
     }
     catch (error) {
+      setIsError(true)
       console.error(error)
     }
   }
@@ -96,11 +96,15 @@ function App() {
     setSelectedCards([])
   }
 
+  function resetError(){
+    setIsError(false)
+  }
+
   return (
     <main>
       <h1>MEMORY GAME</h1>
       {
-        !isGameOn && <Form startGame={startGame} />
+        !isGameOn && !isError && <Form startGame={startGame} />
       }
       { isGameOn && !isGameOver && 
       <AssistiveTechInfo 
@@ -116,7 +120,9 @@ function App() {
           handleClick={handleCardClick}
           selectedCards={selectedCards}
           matchedCards={matchedCards}
-        />}
+        />
+      }
+      {isError && <ErrorCard resetError={resetError} />}
     </main>
   )
 }
