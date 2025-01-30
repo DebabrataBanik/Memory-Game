@@ -8,7 +8,9 @@ A memory matching game built with React, where users can select a category and a
 - [Live Site](#live-site)
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [Continued Development](#continued-development)
 
 ### Features
 
