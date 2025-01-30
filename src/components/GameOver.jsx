@@ -12,7 +12,7 @@ function GameOver({
 
   return (
     <div className="wrapper wrapper--accent" ref={sectionRef} tabIndex={-1}>
-      <p className="p--large">You've matched all the memory cards.</p>
+      <p className="p--large">Great job! You've matched all the memory cards.</p>
       <button className="btn" onClick={handleClick}>Play Again</button>
     </div>
   )
