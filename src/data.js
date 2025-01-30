@@ -21,7 +21,7 @@ const data = {
       value: "symbols"
     }
   ],
-  number: [
+  count: [
     {
       value: "10"
     },
