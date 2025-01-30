@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
-import Form from "./components/Form"
-import MemoryCard from "./components/MemoryCard"
-import AssistiveTechInfo from "./components/AssistiveTechInfo"
-import GameOver from "./components/GameOver"
-import ErrorCard from "./components/ErrorCard"
+import { Form, MemoryCard, AssistiveTechInfo, GameOver, ErrorCard } from "./components"
 
 function App() {
 
+  const initialFormData = {
+    category: 'animals-and-nature',
+    count: 10
+  }
+  
+  const [formData, setFormData] = useState(initialFormData)
   const [isGameOn, setIsGameOn] = useState(false)
   const [emojiArray, setEmojiArray] = useState([])
   const [selectedCards, setSelectedCards] = useState([])
@@ -32,7 +34,7 @@ function App() {
   async function startGame(e) {
     e.preventDefault()
     try {
-      const response = await fetch('https://emojihub.yurace.pro/api/all/category/animals-and-nature')
+      const response = await fetch(`https://emojihub.yurace.pro/api/all/category/${formData.category}`)
       if (!response.ok) {
         throw new Error("Could not fetch data")
       } else {
@@ -64,11 +66,11 @@ function App() {
   }
 
   // generating random indices to get random emojis
-  function getRandomIndices(data, count = 5) {
+  function getRandomIndices(data) {
     // return Array.from({ length: 5 }, () => Math.floor(Math.random() * data.length))
 
     const randomIndices = []
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < (formData.count / 2); i++) {
       const randomIndex = Math.floor(Math.random() * data.length)
       if (!randomIndices.includes(randomIndex)) {
         randomIndices.push(randomIndex)
@@ -78,13 +80,13 @@ function App() {
     }
     return randomIndices
   }
+  
   // selecting atmost 2 cards at once and also making sure that the same card is not selected twice
   function handleCardClick(name, index) {
-    const selectedCard = selectedCards.find(emoji => emoji.index === index)
 
-    if (!selectedCard && selectedCards.length < 2) {
+    if (selectedCards.length < 2) {
       setSelectedCards(prev => [...prev, { name, index }])
-    } else if (!selectedCard && selectedCards.length === 2) {
+    } else if (selectedCards.length === 2) {
       setSelectedCards([{ name, index }])
     }
   }
@@ -100,11 +102,20 @@ function App() {
     setIsError(false)
   }
 
+  function handleFormChange(e){
+    const {name, value} = e.target
+    setFormData(prev => ({...prev, [name]: value}))
+  }
+
   return (
     <main>
       <h1>MEMORY GAME</h1>
       {
-        !isGameOn && !isError && <Form startGame={startGame} />
+        !isGameOn && !isError && 
+        <Form 
+          startGame={startGame} 
+          handleChange={handleFormChange}
+        />
       }
       { isGameOn && !isGameOver && 
       <AssistiveTechInfo 
