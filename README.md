@@ -23,7 +23,7 @@ A memory matching game built with React, where users can select a category and a
 
 ### Live Site
 
-[Memory Game]()
+[Memory Game](https://memory-cards-match.vercel.app/)
 
 ### Installation
 
