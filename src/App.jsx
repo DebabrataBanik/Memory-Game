@@ -16,6 +16,8 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false)
   const [isError, setIsError] = useState(false)
 
+  const API_KEY = import.meta.env.VITE_ACCESS_KEY;
+
   useEffect(() => {
     if (selectedCards.length === 2 && selectedCards.every(card => card.name === selectedCards[0].name)) {
       const alreadyMatched = matchedCards.some(card => card.name === selectedCards[0].name)
@@ -34,7 +36,11 @@ function App() {
   async function startGame(e) {
     e.preventDefault()
     try {
-      const response = await fetch(`https://emojihub.yurace.pro/api/all/category/${formData.category}`)
+      const response = await fetch(`https://api.api-ninjas.com/v1/emoji?group=${formData.category}`, {
+        headers: {
+          "X-Api-Key": API_KEY
+        }
+      })
       if (!response.ok) {
         throw new Error("Could not fetch data")
       } else {

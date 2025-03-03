@@ -2,15 +2,15 @@ const data = {
   category: [
     {
       name: "Animals and nature",
-      value: "animals-and-nature"
+      value: "animals_nature"
     },
     {
       name: "Food and drink",
-      value: "food-and-drink"
+      value: "food_drink"
     },
     {
       name: "Travel and places",
-      value: "travel-and-places"
+      value: "travel_places"
     },
     {
       name: "Objects",
@@ -19,6 +19,10 @@ const data = {
     {
       name: "Symbols",
       value: "symbols"
+    },
+    {
+      name: "Flags",
+      value: 'flags'
     }
   ],
   count: [

@@ -15,8 +15,13 @@ function EmojiBtn({
       disabled={isCardSelected || isCardMatched}
       onClick={handleClick}
     >
-      {
+      {/* previous api code {
         isCardSelected || isCardMatched ? decodeEntity(emoji.htmlCode[0]) : '?'
+      } */}
+      
+      {
+        isCardSelected || isCardMatched ? 
+        <img src={emoji.image}/> : '?'
       }
     </button >
   )
