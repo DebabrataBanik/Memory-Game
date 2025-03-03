@@ -4,7 +4,7 @@ import { Form, MemoryCard, AssistiveTechInfo, GameOver, ErrorCard } from "./comp
 function App() {
 
   const initialFormData = {
-    category: 'animals-and-nature',
+    category: 'animals_nature',
     count: 10
   }
   
